@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: servicezone_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: servicezone
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: servicezone_backend
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://postgres:postgrespassword@db:5432/servicezone
+      SECRET_KEY: docker-production-quantico-secret-key-2026
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: servicezone_frontend
+    restart: always
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

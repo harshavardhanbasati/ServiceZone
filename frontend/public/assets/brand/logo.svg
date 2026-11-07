@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" fill="none">
+  <rect x="0" y="4" width="40" height="40" fill="#111820" />
+  <path d="M10 14H30L16 28H30" stroke="#246BFD" stroke-width="3.5" stroke-linecap="square" />
+  <rect x="24" y="26" width="6" height="6" fill="#F1F0EB" />
+  <text x="52" y="32" font-family="'Quantico', sans-serif" font-weight="700" font-size="24" fill="#111820" letter-spacing="1">SERVICE<tspan fill="#246BFD">ZONE</tspan></text>
+</svg>
